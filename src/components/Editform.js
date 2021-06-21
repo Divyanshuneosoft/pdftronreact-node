@@ -40,7 +40,7 @@ const Editform = () => {
                         <textarea type="text" placeholder="Address" name="Address" value={formData.Address} onChange={onChangeText} />
                     </div>
                 <div className="form-group">
-                        <DatePicker selected={formData.DATE} onChange={(date) => setFormData({ ...formData, DATE: date })} dateFormat="dd/mm/yyyy"  showYearDropdown={true} />
+                        <DatePicker selected={formData.DATE} onChange={(date) => setFormData({ ...formData, DATE: date })} dateFormat="dd/MM/yyyy"  showYearDropdown={true} />
                 </div>
                 <div className="form-group">
                         <input type="submit" className="btn btn-primary" value="Submit" />
