@@ -3,7 +3,8 @@ const app = express();
 const { PDFNet } = require('@pdftron/pdfnet-node');
 const fs = require('fs');
 const path = require('path');
-const cors = require('cors')
+const cors = require('cors');
+const communication = require('./communication');
 const port = process.env.PORT || 4000;
 app.use(cors())
 app.use(express.json())
@@ -49,6 +50,15 @@ app.post('/edit-pdf',async(req,res)=>{
         return res.status(500).send({'message':'service unavailable'})
     }
     return res.status(200).send({pdfname:pdfname})
+})
+app.post('/send-mail',async(req,res)=>{
+    try {
+       await communication.sendEmail(req.body) 
+    } catch (error) {
+        return res.status(500).send({'message':'service unavailable'})
+    }
+    return res.status(200).send({message:'Mail sent successfully'})
+
 })
 app.listen(port, () => {
     console.log(`port is connected on ${port}`)
