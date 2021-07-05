@@ -9,8 +9,8 @@ class Communicate{
             secure: false,
             ignoreTLS: true,
             auth: {
-                user:"divyanshu.agarwal@neosoftmail.com",
-                pass: "PPmf)JvBljjZ"
+                user:"username",
+                pass: "password"
             },
             connectionTimeout: 5 * 60 * 1000,
             tls: {
