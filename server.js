@@ -7,6 +7,7 @@ const cors = require('cors');
 const communication = require('./communication');
 const port = process.env.PORT || 4000;
 app.use(cors())
+app.use(express.text())
 app.use(express.json())
 app.get('/load-pdf', async (req, res) => {
     const main = async () => {
@@ -59,6 +60,17 @@ app.post('/send-mail',async(req,res)=>{
     }
     return res.status(200).send({message:'Mail sent successfully'})
 
+})
+app.post('/save-annotation',async(req,res)=>{
+    fs.writeFile('annotation.xml',req.body,(err)=>{
+        if(err) return res.status(500).send({message:"File error"})
+        return res.status(200).send({message:'annotation save successfully'})
+    })
+})
+app.get('/load-annotation',async(req,res)=>{
+    const data = fs.readFileSync('annotation.xml',{encoding:'utf-8',flag:'r'})
+    res.set('Content-Type', 'text/xml')
+    return res.status(200).send(data)
 })
 app.listen(port, () => {
     console.log(`port is connected on ${port}`)

@@ -3,14 +3,14 @@ import {Route,Switch,BrowserRouter as Router} from 'react-router-dom'
 import './App.css';
 import Editform from './components/Editform';
 import Mailform from './components/Mailform'
-import Loadpdf from './components/Loadpdf';
+import Annotation from './components/Annotation';
 
 function App() {
   return (
     <>
     <Router>
       <Switch>
-        <Route exact path="/" component={Loadpdf} />
+        <Route exact path="/" component={Annotation} />
         <Route path="/edit" component = {Editform} />
         <Route path="/mail" component = {Mailform} />
 
